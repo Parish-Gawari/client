@@ -4,6 +4,7 @@ import FormField from "./../components/FormField/FormField";
 import preview from "../assets/preview.png";
 
 import Loader from "./../components/Loader/Loader";
+import { getRandomPrompt } from "./../utils/index";
 
 const CreatePost = () => {
   const naviagte = useNavigate();
@@ -15,8 +16,13 @@ const CreatePost = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
   const handleSubmit = () => {};
-  const handleChange = () => {};
-  const handleSurpriseMe = () => {};
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleSurpriseMe = () => {
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt: randomPrompt });
+  };
   const generateImage = () => {};
   return (
     <section className="max-w-7xl mx-auto">
